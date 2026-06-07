@@ -1,0 +1,49 @@
+{
+  "targets": [
+    {
+      "name": "manual-postgres",
+      "toolchain": "docker+postgres:16-alpine",
+      "framework": "manual routing",
+      "build_command": "docker run postgres:16-alpine x3 + schema init",
+      "exit_code": 0,
+      "duration_ms": 0,
+      "binary_size_bytes": 0,
+      "image_size_bytes": 324697968,
+      "dependencies_count": 0,
+      "warnings_count": 0,
+      "errors": null,
+      "stdout_excerpt": "",
+      "notes": "three shard containers initialized"
+    },
+    {
+      "name": "cockroachdb",
+      "toolchain": "docker+cockroachdb/cockroach:v25.3.4",
+      "framework": "native distributed sql",
+      "build_command": "docker run cockroachdb/cockroach:v25.3.4 x3 + cluster init",
+      "exit_code": 0,
+      "duration_ms": 0,
+      "binary_size_bytes": 0,
+      "image_size_bytes": 509126985,
+      "dependencies_count": 0,
+      "warnings_count": 0,
+      "errors": null,
+      "stdout_excerpt": "",
+      "notes": "three-node cluster initialized"
+    },
+    {
+      "name": "tidb",
+      "toolchain": "docker+tidb",
+      "framework": "native distributed sql",
+      "build_command": "docker run pingcap/pd:latest x3 + pingcap/tikv:latest x3 + pingcap/tidb:latest",
+      "exit_code": 0,
+      "duration_ms": 0,
+      "binary_size_bytes": 0,
+      "image_size_bytes": 2341868663,
+      "dependencies_count": 0,
+      "warnings_count": 0,
+      "errors": null,
+      "stdout_excerpt": "",
+      "notes": "TiDB cluster started with explicit docker runs"
+    }
+  ]
+}

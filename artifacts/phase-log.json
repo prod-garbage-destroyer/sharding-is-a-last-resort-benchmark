@@ -1,0 +1,191 @@
+{
+  "phases": [
+    {
+      "name": "prepare",
+      "phase_start_ts": "2026-06-05T20:12:43.511908Z",
+      "phase_end_ts": "2026-06-05T20:12:44.153583Z",
+      "status": "ok",
+      "commands": [
+        "start infrastructure for manual-postgres"
+      ],
+      "artifacts": null
+    },
+    {
+      "name": "verify",
+      "phase_start_ts": "2026-06-05T20:12:44.153585Z",
+      "phase_end_ts": "2026-06-05T20:12:48.16138Z",
+      "status": "ok",
+      "commands": [
+        "ping manual-postgres",
+        "create schema and seed 100000 tenants",
+        "run smoke checks for increment/read/transfer/range_report"
+      ],
+      "artifacts": null
+    },
+    {
+      "name": "warmup",
+      "phase_start_ts": "2026-06-05T20:12:48.161391Z",
+      "phase_end_ts": "2026-06-05T20:14:48.460922Z",
+      "status": "ok",
+      "commands": [
+        "run 3 warmup passes at 8, 24, 64, and 128-way concurrency"
+      ],
+      "artifacts": null
+    },
+    {
+      "name": "measure",
+      "phase_start_ts": "2026-06-05T20:14:48.460931Z",
+      "phase_end_ts": "2026-06-05T20:23:09.988375Z",
+      "status": "ok",
+      "commands": [
+        "run 5 measurement passes at 8, 24, 64, and 128-way concurrency"
+      ],
+      "artifacts": null
+    },
+    {
+      "name": "profile",
+      "phase_start_ts": "2026-06-05T20:23:09.988379Z",
+      "phase_end_ts": "2026-06-05T20:23:15.994798Z",
+      "status": "ok",
+      "commands": [
+        "sample docker stats for CPU, RSS, and network IO"
+      ],
+      "artifacts": null
+    },
+    {
+      "name": "prepare",
+      "phase_start_ts": "2026-06-05T20:23:16.298962Z",
+      "phase_end_ts": "2026-06-05T20:23:24.997252Z",
+      "status": "ok",
+      "commands": [
+        "start infrastructure for cockroachdb"
+      ],
+      "artifacts": null
+    },
+    {
+      "name": "verify",
+      "phase_start_ts": "2026-06-05T20:23:24.997256Z",
+      "phase_end_ts": "2026-06-05T20:23:29.039959Z",
+      "status": "ok",
+      "commands": [
+        "ping cockroachdb",
+        "create schema and seed 100000 tenants",
+        "run smoke checks for increment/read/transfer/range_report"
+      ],
+      "artifacts": null
+    },
+    {
+      "name": "warmup",
+      "phase_start_ts": "2026-06-05T20:23:29.039967Z",
+      "phase_end_ts": "2026-06-05T20:25:30.190068Z",
+      "status": "ok",
+      "commands": [
+        "run 3 warmup passes at 8, 24, 64, and 128-way concurrency"
+      ],
+      "artifacts": null
+    },
+    {
+      "name": "measure",
+      "phase_start_ts": "2026-06-05T20:25:30.190071Z",
+      "phase_end_ts": "2026-06-05T20:33:54.295386Z",
+      "status": "ok",
+      "commands": [
+        "run 5 measurement passes at 8, 24, 64, and 128-way concurrency"
+      ],
+      "artifacts": null
+    },
+    {
+      "name": "profile",
+      "phase_start_ts": "2026-06-05T20:33:54.295395Z",
+      "phase_end_ts": "2026-06-05T20:34:00.312775Z",
+      "status": "ok",
+      "commands": [
+        "sample docker stats for CPU, RSS, and network IO"
+      ],
+      "artifacts": null
+    },
+    {
+      "name": "prepare",
+      "phase_start_ts": "2026-06-05T20:34:00.557948Z",
+      "phase_end_ts": "2026-06-05T20:34:18.161834Z",
+      "status": "ok",
+      "commands": [
+        "start infrastructure for tidb"
+      ],
+      "artifacts": null
+    },
+    {
+      "name": "verify",
+      "phase_start_ts": "2026-06-05T20:34:18.161837Z",
+      "phase_end_ts": "2026-06-05T20:34:31.115404Z",
+      "status": "ok",
+      "commands": [
+        "ping tidb",
+        "create schema and seed 100000 tenants",
+        "run smoke checks for increment/read/transfer/range_report"
+      ],
+      "artifacts": null
+    },
+    {
+      "name": "warmup",
+      "phase_start_ts": "2026-06-05T20:34:31.11543Z",
+      "phase_end_ts": "2026-06-05T20:36:32.010728Z",
+      "status": "ok",
+      "commands": [
+        "run 3 warmup passes at 8, 24, 64, and 128-way concurrency"
+      ],
+      "artifacts": null
+    },
+    {
+      "name": "measure",
+      "phase_start_ts": "2026-06-05T20:36:32.010731Z",
+      "phase_end_ts": "2026-06-05T20:47:34.757641Z",
+      "status": "ok",
+      "commands": [
+        "run 5 measurement passes at 8, 24, 64, and 128-way concurrency"
+      ],
+      "artifacts": null
+    },
+    {
+      "name": "profile",
+      "phase_start_ts": "2026-06-05T20:47:34.75765Z",
+      "phase_end_ts": "2026-06-05T20:47:48.804798Z",
+      "status": "ok",
+      "commands": [
+        "sample docker stats for CPU, RSS, and network IO"
+      ],
+      "artifacts": null
+    },
+    {
+      "name": "aggregate",
+      "phase_start_ts": "2026-06-05T20:47:49.265085Z",
+      "phase_end_ts": "2026-06-05T20:47:50.483725Z",
+      "status": "ok",
+      "commands": [
+        "aggregate per-run and per-target metrics",
+        "write benchmark-report.json and visual datasets"
+      ],
+      "artifacts": null
+    },
+    {
+      "name": "validate",
+      "phase_start_ts": "2026-06-05T20:47:50.483729Z",
+      "phase_end_ts": "2026-06-05T20:47:50.48376Z",
+      "status": "ok",
+      "commands": [
+        "validate artifact completeness and metric coverage"
+      ],
+      "artifacts": null
+    },
+    {
+      "name": "export",
+      "phase_start_ts": "2026-06-05T20:47:50.48376Z",
+      "phase_end_ts": "2026-06-05T20:47:50.484285Z",
+      "status": "ok",
+      "commands": [
+        "write final artifacts"
+      ],
+      "artifacts": null
+    }
+  ]
+}

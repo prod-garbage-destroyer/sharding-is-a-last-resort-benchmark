@@ -1,0 +1,17 @@
+{
+  "os": "darwin",
+  "os_version": "26.5.1",
+  "cpu": "Apple M4",
+  "ram_gb": 24,
+  "docker_version": "Docker version 29.5.2, build 79eb04c7d8",
+  "toolchains": [
+    {
+      "name": "go",
+      "version": "go1.26.3"
+    }
+  ],
+  "benchmark_tool": "go-harness",
+  "benchmark_tool_version": "custom",
+  "timestamp": "2026-06-05T20:12:43.511857Z",
+  "hostname": "Mac"
+}

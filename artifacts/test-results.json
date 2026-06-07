@@ -1,0 +1,43 @@
+{
+  "targets": [
+    {
+      "name": "manual-postgres",
+      "test_command": "smoke increment/read/transfer/range_report",
+      "exit_code": 0,
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "duration_ms": 0,
+      "coverage_pct": 0,
+      "failures": null,
+      "notes": "all smoke checks passed"
+    },
+    {
+      "name": "cockroachdb",
+      "test_command": "smoke increment/read/transfer/range_report",
+      "exit_code": 0,
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "duration_ms": 0,
+      "coverage_pct": 0,
+      "failures": null,
+      "notes": "all smoke checks passed"
+    },
+    {
+      "name": "tidb",
+      "test_command": "smoke increment/read/transfer/range_report",
+      "exit_code": 0,
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "duration_ms": 0,
+      "coverage_pct": 0,
+      "failures": null,
+      "notes": "all smoke checks passed"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "charts": [
+    {
+      "type": "line",
+      "title": "Throughput scaling by concurrency",
+      "x_label": "Concurrency",
+      "y_label": "ops/s",
+      "lower_is_better": false,
+      "annotations": null,
+      "series": [
+        {
+          "target": "manual-postgres-c8",
+          "value": 2348.2266383327706,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "manual-postgres-c24",
+          "value": 3220.8475098696867,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "manual-postgres-c64",
+          "value": 4069.6233322829476,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "manual-postgres-c128",
+          "value": 4716.888639877472,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "cockroachdb-c8",
+          "value": 380.5611945354343,
+          "color_hint": "amber"
+        },
+        {
+          "target": "cockroachdb-c24",
+          "value": 460.4927522114711,
+          "color_hint": "amber"
+        },
+        {
+          "target": "cockroachdb-c64",
+          "value": 524.7586751563515,
+          "color_hint": "amber"
+        },
+        {
+          "target": "cockroachdb-c128",
+          "value": 452.9909665682917,
+          "color_hint": "amber"
+        },
+        {
+          "target": "tidb-c8",
+          "value": 602.5118586486623,
+          "color_hint": "red"
+        },
+        {
+          "target": "tidb-c24",
+          "value": 1159.6536425805918,
+          "color_hint": "red"
+        },
+        {
+          "target": "tidb-c64",
+          "value": 1221.1682847394243,
+          "color_hint": "red"
+        },
+        {
+          "target": "tidb-c128",
+          "value": 1414.0387650761838,
+          "color_hint": "red"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "charts": [
+    {
+      "type": "bar",
+      "title": "Environment summary",
+      "x_label": "Metric",
+      "y_label": "value",
+      "lower_is_better": false,
+      "annotations": null,
+      "series": [
+        {
+          "target": "docker",
+          "value": 1,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "go",
+          "value": 1,
+          "color_hint": "amber"
+        }
+      ]
+    }
+  ]
+}

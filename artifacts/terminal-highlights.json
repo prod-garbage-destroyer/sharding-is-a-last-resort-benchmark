@@ -1,0 +1,26 @@
+[
+  {
+    "target": "manual-postgres",
+    "label": "three shard containers",
+    "command": "docker run postgres:16-alpine ... x3",
+    "output": "Three PostgreSQL shard containers became ready and accepted the seed load.",
+    "category": "startup",
+    "why_it_matters": "This is the manual partitioning baseline."
+  },
+  {
+    "target": "cockroachdb",
+    "label": "cluster init",
+    "command": "docker exec roach1 cockroach init --insecure",
+    "output": "Cockroach cluster initialized successfully after the three nodes joined.",
+    "category": "startup",
+    "why_it_matters": "Shows the native distributed cluster came up as a single logical database."
+  },
+  {
+    "target": "tidb",
+    "label": "compose startup",
+    "command": "docker compose -f /private/tmp/tidb-docker-compose/docker-compose.yml up -d pd0 pd1 pd2 tikv0 tikv1 tikv2 tidb",
+    "output": "TiDB quick-start topology launched on the local Docker network.",
+    "category": "startup",
+    "why_it_matters": "Confirms the TiDB cluster used the official topology path."
+  }
+]

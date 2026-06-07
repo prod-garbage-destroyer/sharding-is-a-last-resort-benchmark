@@ -1,0 +1,102 @@
+{
+  "experiment_slug": "sharding-is-a-last-resort-newsql-vs-manual-partitioning",
+  "topic": "Sharding Is A Last Resort",
+  "targets": [
+    "manual-postgres",
+    "cockroachdb",
+    "tidb"
+  ],
+  "experiment_type": "combined",
+  "overall_framing": "Use native distribution when you need the database to absorb routing, fan-out, and cross-node coordination. Manual sharding makes the application carry that tax forever.",
+  "category_winners": [
+    {
+      "category": "throughput",
+      "winner": "manual-postgres",
+      "evidence": "Simple single-shard writes without distributed coordination overhead.",
+      "margin": "native distribution vs manual routing path"
+    },
+    {
+      "category": "tail latency",
+      "winner": "manual-postgres",
+      "evidence": "Direct routing to the correct shard minimizes network hops for simple operations.",
+      "margin": "lower coordination overhead"
+    },
+    {
+      "category": "ops simplicity",
+      "winner": "tidb",
+      "evidence": "The quick-start topology starts as a named cluster, not a custom routing layer.",
+      "margin": "less bespoke glue than manual sharding"
+    },
+    {
+      "category": "manual flexibility",
+      "winner": "manual-postgres",
+      "evidence": "Shard maps can be changed by the client if the team accepts the maintenance burden.",
+      "margin": "flexibility comes with higher complexity"
+    }
+  ],
+  "per_target": [
+    {
+      "name": "manual-postgres",
+      "strengths": [
+        "simple single-shard writes",
+        "explicit control over routing"
+      ],
+      "weaknesses": [
+        "fan-out work is application-owned",
+        "cross-shard transfers require compensating logic",
+        "re-sharding is a maintenance event"
+      ],
+      "best_for": [
+        "small teams with fixed shard maps"
+      ],
+      "avoid_unless": [
+        "you want the database to handle distribution for you"
+      ]
+    },
+    {
+      "name": "cockroachdb",
+      "strengths": [
+        "native distributed SQL",
+        "single logical endpoint",
+        "automatic transaction coordination"
+      ],
+      "weaknesses": [
+        "cluster overhead is higher than a single shard",
+        "more moving parts than plain Postgres"
+      ],
+      "best_for": [
+        "horizontal scale with the least custom routing code"
+      ],
+      "avoid_unless": [
+        "you cannot tolerate distributed transaction overhead"
+      ]
+    },
+    {
+      "name": "tidb",
+      "strengths": [
+        "MySQL wire compatibility",
+        "native distributed execution",
+        "good fit for teams that already speak MySQL"
+      ],
+      "weaknesses": [
+        "cluster topology is heavier than manual Postgres",
+        "needs TiKV/PD coordination"
+      ],
+      "best_for": [
+        "teams wanting distributed SQL without changing the client protocol"
+      ],
+      "avoid_unless": [
+        "you only need one box and one process"
+      ]
+    }
+  ],
+  "confidence": "medium",
+  "confidence_notes": "The benchmark is fair on the logical workload and routing burden, but cluster topology and engine maturity still influence absolute throughput numbers.",
+  "caveats": [
+    "manual Postgres uses client-managed shard coordination, which is the point of the comparison",
+    "results should be interpreted as local cluster evidence, not a cloud-region benchmark"
+  ],
+  "fairness_violations": [],
+  "failed_targets": null,
+  "verdict_valid": true
+}

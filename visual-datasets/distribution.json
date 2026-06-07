@@ -1,0 +1,44 @@
+{
+  "charts": [
+    {
+      "type": "scatter",
+      "title": "Throughput vs tail latency",
+      "x_label": "p95 latency ms",
+      "y_label": "ops/s",
+      "lower_is_better": false,
+      "annotations": null,
+      "series": [
+        {
+          "target": "manual-postgres",
+          "value": 3588.89653009072,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "manual-postgres-p95",
+          "value": 31.29793072249999,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "cockroachdb",
+          "value": 454.7008971178872,
+          "color_hint": "amber"
+        },
+        {
+          "target": "cockroachdb-p95",
+          "value": 296.2533122174999,
+          "color_hint": "amber"
+        },
+        {
+          "target": "tidb",
+          "value": 1099.3431377612158,
+          "color_hint": "red"
+        },
+        {
+          "target": "tidb-p95",
+          "value": 105.43713482499997,
+          "color_hint": "red"
+        }
+      ]
+    }
+  ]
+}

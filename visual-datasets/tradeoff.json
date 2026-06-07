@@ -1,0 +1,29 @@
+{
+  "charts": [
+    {
+      "type": "horizontal-bar",
+      "title": "Error-rate tradeoff",
+      "x_label": "Target",
+      "y_label": "error rate %",
+      "lower_is_better": true,
+      "annotations": null,
+      "series": [
+        {
+          "target": "manual-postgres",
+          "value": 0,
+          "color_hint": "amber"
+        },
+        {
+          "target": "cockroachdb",
+          "value": 0,
+          "color_hint": "amber"
+        },
+        {
+          "target": "tidb",
+          "value": 0,
+          "color_hint": "amber"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "charts": [
+    {
+      "type": "bar",
+      "title": "Methodology",
+      "x_label": "Phase",
+      "y_label": "seconds",
+      "lower_is_better": false,
+      "annotations": null,
+      "series": [
+        {
+          "target": "warmup",
+          "value": 30,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "measurement",
+          "value": 400,
+          "color_hint": "amber"
+        }
+      ]
+    }
+  ]
+}

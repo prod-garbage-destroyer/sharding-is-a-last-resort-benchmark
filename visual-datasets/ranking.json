@@ -1,0 +1,29 @@
+{
+  "charts": [
+    {
+      "type": "bar",
+      "title": "Throughput ranking",
+      "x_label": "Target",
+      "y_label": "ops/s",
+      "lower_is_better": false,
+      "annotations": null,
+      "series": [
+        {
+          "target": "manual-postgres",
+          "value": 3588.89653009072,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "cockroachdb",
+          "value": 454.7008971178872,
+          "color_hint": "amber"
+        },
+        {
+          "target": "tidb",
+          "value": 1099.3431377612158,
+          "color_hint": "red"
+        }
+      ]
+    }
+  ]
+}

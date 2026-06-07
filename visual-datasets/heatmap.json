@@ -1,0 +1,314 @@
+{
+  "charts": [
+    {
+      "type": "bar",
+      "title": "Resource footprint",
+      "x_label": "Target",
+      "y_label": "RSS MB",
+      "lower_is_better": true,
+      "annotations": null,
+      "series": [
+        {
+          "target": "manual-postgres-1",
+          "value": 1180,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "manual-postgres-2",
+          "value": 1186.9,
+          "color_hint": "amber"
+        },
+        {
+          "target": "manual-postgres-3",
+          "value": 1196.5,
+          "color_hint": "red"
+        },
+        {
+          "target": "manual-postgres-4",
+          "value": 1204,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "manual-postgres-5",
+          "value": 1212.7,
+          "color_hint": "amber"
+        },
+        {
+          "target": "manual-postgres-6",
+          "value": 1229.1,
+          "color_hint": "red"
+        },
+        {
+          "target": "manual-postgres-7",
+          "value": 1237.7,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "manual-postgres-8",
+          "value": 1251.1,
+          "color_hint": "amber"
+        },
+        {
+          "target": "manual-postgres-9",
+          "value": 1262.9,
+          "color_hint": "red"
+        },
+        {
+          "target": "manual-postgres-10",
+          "value": 1274.8000000000002,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "manual-postgres-11",
+          "value": 1290.8,
+          "color_hint": "amber"
+        },
+        {
+          "target": "manual-postgres-12",
+          "value": 1305,
+          "color_hint": "red"
+        },
+        {
+          "target": "manual-postgres-13",
+          "value": 1321.6,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "manual-postgres-14",
+          "value": 1336.4,
+          "color_hint": "amber"
+        },
+        {
+          "target": "manual-postgres-15",
+          "value": 1354.2,
+          "color_hint": "red"
+        },
+        {
+          "target": "manual-postgres-16",
+          "value": 1371.4,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "manual-postgres-17",
+          "value": 1387.9,
+          "color_hint": "amber"
+        },
+        {
+          "target": "manual-postgres-18",
+          "value": 1402.5,
+          "color_hint": "red"
+        },
+        {
+          "target": "manual-postgres-19",
+          "value": 1422.5,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "manual-postgres-20",
+          "value": 1405.7,
+          "color_hint": "amber"
+        },
+        {
+          "target": "cockroachdb-1",
+          "value": 2291.3720000000003,
+          "color_hint": "red"
+        },
+        {
+          "target": "cockroachdb-2",
+          "value": 2301.572,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "cockroachdb-3",
+          "value": 2321.5640000000003,
+          "color_hint": "amber"
+        },
+        {
+          "target": "cockroachdb-4",
+          "value": 2322.04,
+          "color_hint": "red"
+        },
+        {
+          "target": "cockroachdb-5",
+          "value": 2321.9719999999998,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "cockroachdb-6",
+          "value": 2322.8720000000003,
+          "color_hint": "amber"
+        },
+        {
+          "target": "cockroachdb-7",
+          "value": 2327.2439999999997,
+          "color_hint": "red"
+        },
+        {
+          "target": "cockroachdb-8",
+          "value": 2360.148,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "cockroachdb-9",
+          "value": 2345.0200000000004,
+          "color_hint": "amber"
+        },
+        {
+          "target": "cockroachdb-10",
+          "value": 2367.02,
+          "color_hint": "red"
+        },
+        {
+          "target": "cockroachdb-11",
+          "value": 2380.312,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "cockroachdb-12",
+          "value": 2374.944,
+          "color_hint": "amber"
+        },
+        {
+          "target": "cockroachdb-13",
+          "value": 2380.44,
+          "color_hint": "red"
+        },
+        {
+          "target": "cockroachdb-14",
+          "value": 2378.2439999999997,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "cockroachdb-15",
+          "value": 2366.468,
+          "color_hint": "amber"
+        },
+        {
+          "target": "cockroachdb-16",
+          "value": 2355.608,
+          "color_hint": "red"
+        },
+        {
+          "target": "cockroachdb-17",
+          "value": 2367.312,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "cockroachdb-18",
+          "value": 2365.808,
+          "color_hint": "amber"
+        },
+        {
+          "target": "cockroachdb-19",
+          "value": 2378.928,
+          "color_hint": "red"
+        },
+        {
+          "target": "cockroachdb-20",
+          "value": 2385.184,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "tidb-1",
+          "value": 5644.55,
+          "color_hint": "amber"
+        },
+        {
+          "target": "tidb-2",
+          "value": 5666.968,
+          "color_hint": "red"
+        },
+        {
+          "target": "tidb-3",
+          "value": 5631.31,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "tidb-4",
+          "value": 5678.222,
+          "color_hint": "amber"
+        },
+        {
+          "target": "tidb-5",
+          "value": 5714.074,
+          "color_hint": "red"
+        },
+        {
+          "target": "tidb-6",
+          "value": 5869.256,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "tidb-7",
+          "value": 5955.076,
+          "color_hint": "amber"
+        },
+        {
+          "target": "tidb-8",
+          "value": 5991.08,
+          "color_hint": "red"
+        },
+        {
+          "target": "tidb-9",
+          "value": 6036.214000000001,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "tidb-10",
+          "value": 5838.466,
+          "color_hint": "amber"
+        },
+        {
+          "target": "tidb-11",
+          "value": 5808.784,
+          "color_hint": "red"
+        },
+        {
+          "target": "tidb-12",
+          "value": 5864.746,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "tidb-13",
+          "value": 5988.022,
+          "color_hint": "amber"
+        },
+        {
+          "target": "tidb-14",
+          "value": 5977.75,
+          "color_hint": "red"
+        },
+        {
+          "target": "tidb-15",
+          "value": 6019.334,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "tidb-16",
+          "value": 6041.9,
+          "color_hint": "amber"
+        },
+        {
+          "target": "tidb-17",
+          "value": 6050.424,
+          "color_hint": "red"
+        },
+        {
+          "target": "tidb-18",
+          "value": 6129.262,
+          "color_hint": "cyan"
+        },
+        {
+          "target": "tidb-19",
+          "value": 6191.040000000001,
+          "color_hint": "amber"
+        },
+        {
+          "target": "tidb-20",
+          "value": 5975.898,
+          "color_hint": "red"
+        }
+      ]
+    }
+  ]
+}

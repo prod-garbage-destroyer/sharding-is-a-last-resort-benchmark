@@ -1,0 +1,17 @@
+{
+  "cockroachdb": {
+    "cpu_percent": 15.77,
+    "rss_mb": 2385.084,
+    "net_io_mb": 3141
+  },
+  "manual-postgres": {
+    "cpu_percent": 17.240000000000002,
+    "rss_mb": 1405.5,
+    "net_io_mb": 2107
+  },
+  "tidb": {
+    "cpu_percent": 28.67,
+    "rss_mb": 5966.692000000001,
+    "net_io_mb": 7518.14
+  }
+}

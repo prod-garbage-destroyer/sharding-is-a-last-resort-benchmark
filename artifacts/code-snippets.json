@@ -1,0 +1,42 @@
+[
+  {
+    "target": "manual-postgres",
+    "file_path": "runner/targets.go",
+    "label": "manual shard routing",
+    "start_line": 88,
+    "end_line": 110,
+    "language": "go",
+    "snippet": "func (t *manualPostgresTarget) route(tenant int64) int { ... }",
+    "why_it_matters": "This is the application-level routing that native distributed SQL removes."
+  },
+  {
+    "target": "manual-postgres",
+    "file_path": "runner/targets.go",
+    "label": "cross-shard saga",
+    "start_line": 149,
+    "end_line": 205,
+    "language": "go",
+    "snippet": "func (t *manualPostgresTarget) Transfer(...) error { ... }",
+    "why_it_matters": "Manual sharding must coordinate cross-shard transfers with compensating writes."
+  },
+  {
+    "target": "cockroachdb",
+    "file_path": "runner/targets.go",
+    "label": "single-cluster transaction",
+    "start_line": 268,
+    "end_line": 313,
+    "language": "go",
+    "snippet": "func (t *sqlTarget) Transfer(...) error { ... }",
+    "why_it_matters": "CockroachDB handles the same transfer logic in one transactional path."
+  },
+  {
+    "target": "tidb",
+    "file_path": "runner/main.go",
+    "label": "mixed workload orchestration",
+    "start_line": 264,
+    "end_line": 350,
+    "language": "go",
+    "snippet": "for i := 0; i \u003c r.cfg.Concurrency; i++ { ... }",
+    "why_it_matters": "The harness applies the same request mix to every target before aggregation."
+  }
+]

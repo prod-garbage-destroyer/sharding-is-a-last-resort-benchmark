@@ -1,0 +1,174 @@
+schema_version: 1
+experiment:
+  topic: "Sharding Is A Last Resort: Manual Postgres shard routing vs CockroachDB and TiDB native distribution"
+  targets:
+    - name: manual-postgres
+      description: "Three PostgreSQL 16 shards with client-side routing and fan-out coordination"
+    - name: cockroachdb
+      description: "Three-node CockroachDB cluster using native distributed SQL"
+    - name: tidb
+      description: "TiDB cluster with PD and TiKV using native distributed SQL"
+  experiment_type: combined
+  output_slug: sharding-is-a-last-resort-newsql-vs-manual-partitioning
+
+app_spec:
+  logical_model:
+    tables:
+      - name: accounts
+        columns:
+          - name: tenant_id
+            type: BIGINT
+            primary_key: true
+          - name: balance
+            type: BIGINT
+            nullable: false
+            default: 0
+          - name: updated_at
+            type: TIMESTAMP
+            nullable: false
+            default: CURRENT_TIMESTAMP
+      - name: transfers
+        columns:
+          - name: transfer_id
+            type: VARCHAR(40)
+            primary_key: true
+          - name: source_tenant
+            type: BIGINT
+            nullable: false
+          - name: dest_tenant
+            type: BIGINT
+            nullable: false
+          - name: amount
+            type: BIGINT
+            nullable: false
+          - name: status
+            type: VARCHAR(16)
+            nullable: false
+          - name: created_at
+            type: TIMESTAMP
+            nullable: false
+            default: CURRENT_TIMESTAMP
+    indexes:
+      - name: idx_accounts_updated_at
+        table: accounts
+        columns: [updated_at]
+
+  operations:
+    - name: increment
+      description: "Increment one tenant balance and record an audit row"
+      input:
+        tenant_id: "int64"
+        delta: "int64 (always positive)"
+      success_criteria:
+        - "The tenant balance increases by delta"
+        - "An audit row is written for the operation"
+
+    - name: read_balance
+      description: "Read one tenant balance"
+      input:
+        tenant_id: "int64"
+      success_criteria:
+        - "The stored balance is returned"
+
+    - name: transfer
+      description: "Move units between two tenants"
+      input:
+        source_tenant: "int64"
+        dest_tenant: "int64"
+        amount: "int64 (always positive)"
+      success_criteria:
+        - "The source tenant decreases by amount"
+        - "The destination tenant increases by amount"
+        - "The transfer is recorded exactly once"
+
+    - name: range_report
+      description: "Aggregate balances across a tenant range"
+      input:
+        start_tenant: "int64"
+        end_tenant: "int64"
+      success_criteria:
+        - "The sum of balances across the range is returned"
+        - "Manual sharding may fan out and merge results in application code"
+
+  validation_rules:
+    - "tenant_id must be between 1 and 100000"
+    - "delta and amount must be positive"
+    - "source_tenant and dest_tenant must differ for transfer"
+    - "range_report start_tenant must be <= end_tenant"
+
+  data_distribution:
+    - "100000 seeded tenants"
+    - "Initial balance per tenant: 100"
+    - "Manual Postgres uses tenant_id mod 3 shard routing"
+    - "CockroachDB and TiDB receive the same logical schema without client-side routing"
+
+benchmark_criteria:
+  benchmark_tool: go-harness
+  warmup:
+    runs: 3
+    duration_seconds: 10
+  measurement:
+    runs: 5
+    duration_seconds: 20
+    concurrency_levels: [8, 24, 64, 128]
+    request_mix:
+      increment: 60
+      read_balance: 20
+      transfer: 10
+      range_report: 10
+  load_profile:
+    keyspace: 100000
+    range_window: 2000
+    transfer_amount: 1
+    seed: 20260604
+  metrics:
+    - name: throughput
+    - name: p50_latency_ms
+    - name: p95_latency_ms
+    - name: p99_latency_ms
+    - name: mean_latency_ms
+    - name: stddev_latency_ms
+    - name: error_rate_pct
+    - name: cpu_percent
+    - name: rss_mb
+    - name: net_io_mb
+
+environment:
+  runtime: docker
+  orchestration: docker-compose for TiDB; direct Docker containers for Postgres and CockroachDB
+  container_limits:
+    cpu: "1"
+    memory: "512m"
+  postgres:
+    image: postgres:16-alpine
+    shard_count: 3
+    ports: [55432, 55433, 55434]
+  cockroach:
+    image: cockroachdb/cockroach:v25.3.4
+    node_count: 3
+    sql_port: 26257
+  tidb:
+    compose_source: "/private/tmp/tidb-docker-compose/docker-compose.yml"
+    sql_port: 4000
+
+artifacts:
+  required:
+    - artifacts/environment-actions.json
+    - artifacts/environment.json
+    - artifacts/build-results.json
+    - artifacts/test-results.json
+    - artifacts/benchmark-results.json
+    - artifacts/code-snippets.json
+    - artifacts/terminal-highlights.json
+    - artifacts/charts-data.json
+    - artifacts/verdict.json
+    - artifacts/summary.md
+    - benchmark-report.json
+    - visual-datasets/ranking.json
+    - visual-datasets/scaling.json
+    - visual-datasets/distribution.json
+    - visual-datasets/tradeoff.json
+    - visual-datasets/heatmap.json
+    - visual-datasets/methodology.json
+    - visual-datasets/environment.json
+    - visual-datasets/matrix.json
